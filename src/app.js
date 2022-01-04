@@ -1,20 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
-
+import Box from '@material-ui/core/Box';
 import './app.css';
 import Home from './pages/home';
 import About from './pages/about';
 
 function App() {
   return (
-    <div className="app">
+    <Box height={1}>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={About} />
         <Route path="/about" component={About} />
         <Route path="/home" component={Home} />
         <Redirect to="/" />
       </Switch>
-    </div>
+    </Box>
   );
 }
 

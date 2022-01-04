@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
+import withTheme from '@arcblock/ux/lib/withTheme';
+import GraphQLPlayground from '@arcblock/graphql-playground';
+
+const ThemedPlayground = withTheme(GraphQLPlayground);
 
 const About = () => {
   return (
-    <div>
-      <h1>
-        <Link className="app-link" to="/">
-          Back Home
-        </Link>
-      </h1>
-      <h2>Hello, i'm a static blocklet</h2>
-    </div>
+    <Box height={1}>
+      <ThemedPlayground
+        style={{ height: '100%', marginLeft: 10 }}
+        // defaultQuery={defaultQuery}
+        endpoint="https://beta.abtnetwork.io/api/"
+        title="Query"
+        persistentQuery={false}
+        enableHistory
+        enableQueryComposer
+        enableCodeExporter
+      />
+    </Box>
   );
 };
 
