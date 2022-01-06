@@ -1,7 +1,7 @@
 name: graphql-playground
-version: 1.0.1
+version: 1.0.2
 title: graphql-playground
-description: ABT Node blocklet project
+description: A static dapp that supports connecting to any graphql endpoint
 keywords:
   - blocklet
   - react
@@ -9,11 +9,11 @@ group: static
 did: z8iZpNnc48qcmdMYtvnHFQqroFikNG1AVTmfC
 main: build
 author:
-  name: zhanghan
-  email: zhanghan@arcblock.io
+  name: wangqi
+  email: wangqi@arcblock.io
 repository:
   type: git
-  url: 'git+https://github.com/blocklet/create-blocklet.git'
+  url: 'git+https://github.com/blocklet/graphql-playground.git'
 specVersion: 1.2.1
 logo: logo.png
 files:
