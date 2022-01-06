@@ -1,20 +1,43 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import Box from '@material-ui/core/Box';
+import { ThemeProvider } from 'styled-components';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { create } from '@arcblock/ux/lib/Theme';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import './app.css';
 import Home from './pages/home';
-import About from './pages/about';
 
 function App() {
+  const theme = create({
+    typography: {
+      fontFamily: [
+        'Roboto',
+        'Avenir',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    },
+  });
+
   return (
-    <Box height={1}>
-      <Switch>
-        <Route exact path="/" component={About} />
-        <Route path="/about" component={About} />
-        <Route path="/home" component={Home} />
-        <Redirect to="/" />
-      </Switch>
-    </Box>
+    <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <>
+          <CssBaseline />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Redirect to="/" />
+          </Switch>
+        </>
+      </ThemeProvider>
+    </MuiThemeProvider>
   );
 }
 
