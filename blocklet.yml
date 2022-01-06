@@ -1,4 +1,5 @@
 name: graphql-playground
+version: 1.0.1
 title: graphql-playground
 description: ABT Node blocklet project
 keywords:
@@ -12,9 +13,8 @@ author:
   email: zhanghan@arcblock.io
 repository:
   type: git
-  url: git+https://github.com/blocklet/create-blocklet.git
-specVersion: 1.1.1
-version: 0.1.0
+  url: 'git+https://github.com/blocklet/create-blocklet.git'
+specVersion: 1.2.1
 logo: logo.png
 files:
   - logo.png
@@ -32,10 +32,6 @@ community: ''
 documentation: ''
 homepage: ''
 license: ''
-charging:
-  price: 0
-  tokens: []
-  shares: []
 timeout:
   start: 60
 requirements:
@@ -45,9 +41,13 @@ requirements:
 scripts:
   dev: npm run start
 environments: []
-capabilities: {}
+capabilities:
+  clusterMode: false
 screenshots:
   - 0-home.png
   - 1-docs.png
   - 2-history.png
 children: []
+payment:
+  price: []
+  share: []
