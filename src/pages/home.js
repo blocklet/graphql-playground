@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import GraphQLPlayground from '@arcblock/graphql-playground';
 import EndpointChanger from '../components/endpoint-changer';
 import { getPlaygroundSettings, replaceSearchParams } from '../lib/utils';
+import { ReactComponent as GraphqlLogo } from '../assets/graphql-logo.svg';
 
 const Home = () => {
   const history = useHistory();
@@ -31,11 +33,14 @@ const Home = () => {
           justifyContent="space-between"
           alignItems="center"
           flex="0 0 64px"
-          px={2}
+          px={3}
           bgcolor="grey.200"
           color="text.primary"
           fontWeight={500}>
-          <Box>GraphQL Playgroud</Box>
+          <Box display="flex" alignItems="center">
+            <GraphqlLogo style={{ width: 36, marginRight: 8 }} />
+            <Typography variant="h6">GraphQL Playgroud</Typography>
+          </Box>
           <EndpointChanger endpoint={settings.endpoint} onChange={handleChangeEndpoint} />
         </Box>
       )}
