@@ -14,7 +14,11 @@ export const replaceSearchParams = (search, params) => {
   const hasPrefix = search.charAt(0) === '?';
   const searchParams = new URLSearchParams(hasPrefix ? search.substring(1) : search);
   Object.keys(params).forEach((key) => {
-    searchParams.set(key, params[key]);
+    if (params[key] === null) {
+      searchParams.delete(key);
+    } else {
+      searchParams.set(key, params[key]);
+    }
   });
   return `${hasPrefix ? '?' : ''}${searchParams.toString()}`;
 };

@@ -11,7 +11,8 @@ const Home = () => {
   const history = useHistory();
   const [settings, setSettings] = useState(null);
   const handleChangeEndpoint = (value) => {
-    history.replace({ search: replaceSearchParams(history.location.search, { endpoint: value }) });
+    // 更换 endpoint 时注意将 query 参数清除
+    history.replace({ search: replaceSearchParams(history.location.search, { endpoint: value, query: null }) });
   };
 
   React.useEffect(() => {
