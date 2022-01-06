@@ -3,19 +3,24 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Snackbar from '@material-ui/core/Snackbar';
 import { isValidHttpUrl } from '../lib/utils';
 
 const EndpointChanger = ({ endpoint, onChange, ...rest }) => {
   const [inputText, setInputText] = useState(endpoint);
   const changeEndpoint = () => {
     if (!isValidHttpUrl(inputText)) {
-      alert('Invalid HTTP URL');
+      setSnackbarState({ open: true, message: 'Invalid HTTP URL' });
       return;
     }
     if (endpoint !== inputText) {
       onChange(inputText);
     }
   };
+  const [snackbarState, setSnackbarState] = useState({
+    open: false,
+    message: '',
+  });
   return (
     <Root {...rest}>
       <input
@@ -27,6 +32,13 @@ const EndpointChanger = ({ endpoint, onChange, ...rest }) => {
       <IconButton color="primary" disabled={!inputText.trim() || endpoint === inputText} onClick={changeEndpoint}>
         <ArrowForwardIcon />
       </IconButton>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={snackbarState.open}
+        onClose={() => setSnackbarState((state) => ({ ...state, open: false }))}
+        message={snackbarState.message}
+        autoHideDuration={3000}
+      />
     </Root>
   );
 };
