@@ -6,15 +6,21 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Snackbar from '@material-ui/core/Snackbar';
 import { isValidHttpUrl } from '../lib/utils';
 
-const EndpointChanger = ({ endpoint, onChange, ...rest }) => {
+const EndpointSwitcher = ({ endpoint, onChange, ...rest }) => {
   const [inputText, setInputText] = useState(endpoint);
+  const isValidInputText = !!inputText.trim() && endpoint !== inputText;
   const changeEndpoint = () => {
     if (!isValidHttpUrl(inputText)) {
-      setSnackbarState({ open: true, message: 'Invalid HTTP URL' });
+      setSnackbarState({ open: true, message: 'Invalid URL' });
       return;
     }
     if (endpoint !== inputText) {
       onChange(inputText);
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (isValidInputText && e.key === 'Enter') {
+      changeEndpoint();
     }
   };
   const [snackbarState, setSnackbarState] = useState({
@@ -27,9 +33,10 @@ const EndpointChanger = ({ endpoint, onChange, ...rest }) => {
         type="text"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Enter an endpoint url"
       />
-      <IconButton color="primary" disabled={!inputText.trim() || endpoint === inputText} onClick={changeEndpoint}>
+      <IconButton color="primary" disabled={!isValidInputText} onClick={changeEndpoint}>
         <ArrowForwardIcon />
       </IconButton>
       <Snackbar
@@ -43,12 +50,12 @@ const EndpointChanger = ({ endpoint, onChange, ...rest }) => {
   );
 };
 
-EndpointChanger.propTypes = {
+EndpointSwitcher.propTypes = {
   endpoint: PropTypes.string,
   onChange: PropTypes.func,
 };
 
-EndpointChanger.defaultProps = {
+EndpointSwitcher.defaultProps = {
   endpoint: '',
   onChange: () => {},
 };
@@ -64,4 +71,4 @@ const Root = styled.div`
   }
 `;
 
-export default EndpointChanger;
+export default EndpointSwitcher;

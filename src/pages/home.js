@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import GraphQLPlayground from '@arcblock/graphql-playground';
-import EndpointChanger from '../components/endpoint-changer';
+import EndpointSwitcher from '../components/endpoint-switcher';
 import { getPlaygroundSettings, replaceSearchParams } from '../lib/utils';
 import { ReactComponent as GraphqlLogo } from '../assets/graphql-logo.svg';
 
@@ -20,6 +20,7 @@ const Home = () => {
   }, [history.location.search]);
 
   const hideHeader = new URLSearchParams(history.location.search).get('hideHeader');
+  const basename = window?.blocklet?.prefix || '/';
 
   if (!settings) {
     return null;
@@ -38,11 +39,17 @@ const Home = () => {
           bgcolor="grey.200"
           color="text.primary"
           fontWeight={500}>
-          <Box display="flex" alignItems="center">
+          <Box
+            component="a"
+            href={basename}
+            color="inherit"
+            display="flex"
+            alignItems="center"
+            style={{ textDecoration: 'none' }}>
             <GraphqlLogo style={{ width: 36, marginRight: 8 }} />
             <Typography variant="h6">GraphQL Playgroud</Typography>
           </Box>
-          <EndpointChanger endpoint={settings.endpoint} onChange={handleChangeEndpoint} />
+          <EndpointSwitcher endpoint={settings.endpoint} onChange={handleChangeEndpoint} />
         </Box>
       )}
       <Box component="main" flex="1" overflow="hidden">

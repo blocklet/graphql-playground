@@ -25,13 +25,13 @@ interfaces:
   - type: web
     name: publicUrl
     path: /
-    prefix: "*"
+    prefix: '*'
     port: BLOCKLET_PORT
     protocol: http
-community: ""
-documentation: ""
-homepage: ""
-license: ""
+community: ''
+documentation: ''
+homepage: ''
+license: ''
 charging:
   price: 0
   tokens: []
@@ -39,12 +39,15 @@ charging:
 timeout:
   start: 60
 requirements:
-  abtnode: ">=1.4.0"
-  os: "*"
-  cpu: "*"
+  abtnode: '>=1.4.0'
+  os: '*'
+  cpu: '*'
 scripts:
   dev: npm run start
 environments: []
 capabilities: {}
-screenshots: []
+screenshots:
+  - 0-home.png
+  - 1-docs.png
+  - 2-history.png
 children: []
