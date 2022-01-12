@@ -1,6 +1,6 @@
 name: graphql-playground
-version: 1.0.3
-title: graphql-playground
+version: 1.0.4
+title: GraphQL Playground
 description: A static dapp that supports connecting to any graphql endpoint
 keywords:
   - blocklet
