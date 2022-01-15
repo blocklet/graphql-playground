@@ -25,12 +25,9 @@ jobs:
         uses: blocklet/action-workflow@v1
         with:
           skip-upload: false
-          skip-deploy: false
+          skip-deploy: true
           bundle-command: yarn bundle
           store-endpoint: ${{ secrets.STORE_ENDPOINT_PROD }}
           store-access-token: ${{ secrets.STORE_ACCESS_TOKEN_PROD }}
-          server-endpoint: ${{ secrets.AWS_NODE_ENDPOINT }}
-          server-access-key: ${{ secrets.AWS_NODE_ACCESS_KEY }}
-          server-access-secret: ${{ secrets.AWS_NODE_ACCESS_SECRET }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
